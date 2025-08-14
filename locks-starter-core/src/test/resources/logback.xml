@@ -1,0 +1,13 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="dev.mfataka.locks" level="TRACE"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="org.zalando.logbook" level="INFO" additivity="false">
+        <appender-ref ref="RollingFile"/>
+    </logger>
+</configuration>

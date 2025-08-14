@@ -1,0 +1,35 @@
+#APP setting
+spring:
+  liquibase:
+    contexts: test
+  jpa:
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        globally_quoted_identifiers: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    embedded-database-connection: h2
+  sql:
+    init:
+      mode: embedded
+      continue-on-error: false
+  profiles:
+    active: test
+  main:
+    allow-bean-definition-overriding: true
+
+locks.starter:
+  enabled: true
+  debug-enabled: true
+  max-age: 30s
+  cleanup-interval: 30s
+  endpoint:
+    base-url: "/locks"
+    secure: false
+

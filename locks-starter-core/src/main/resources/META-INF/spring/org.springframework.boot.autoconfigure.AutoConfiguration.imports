@@ -1,0 +1,3 @@
+dev.mfataka.locks.core.config.DistributedLockAutoConfigurer
+dev.mfataka.locks.core.config.LocksSecurityAutoConfigurer
+dev.mfataka.locks.core.config.LocksSwaggerAutoConfigurer

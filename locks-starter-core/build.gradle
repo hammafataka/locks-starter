@@ -1,0 +1,22 @@
+dependencies {
+
+    api project(":locks-starter-api")
+
+    implementation "io.projectreactor.addons:reactor-extra"
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: COMMONS_LANG_VERSION
+    implementation "io.swagger.core.v3:swagger-annotations:$SWAGGER_ANNOTATIONS_VERSION"
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:$SPRING_DOC_VERSION"
+
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation("org.springframework.retry:spring-retry")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+
+    implementation "org.jetbrains:annotations:$JETBRAINS_ANNOTATION_VERSION"
+
+    testImplementation "com.h2database:h2:$H2_VERSION"
+    annotationProcessor(project(":locks-starter-processor"))
+}

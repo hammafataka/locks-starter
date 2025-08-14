@@ -1,0 +1,4 @@
+include:
+  - project: 'mobility-pipeline/library-gradle'
+    file: 'gradle-library-simple.gitlab-ci.yml'
+    ref: "stable-java17"
