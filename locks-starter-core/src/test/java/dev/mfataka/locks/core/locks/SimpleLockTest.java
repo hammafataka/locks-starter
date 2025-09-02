@@ -52,7 +52,7 @@ public class SimpleLockTest {
         final var simpleLock = LockRegistry.simpleLock();
         final var locker = simpleLock.get("test");
         locker.handler()
-                .then(locked -> {
+                .accept(locked -> {
                     Assertions.assertTrue(locked);
                     Assertions.assertFalse(locker.isReleased());
                 });

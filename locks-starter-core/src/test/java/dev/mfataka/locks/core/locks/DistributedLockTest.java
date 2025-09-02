@@ -53,7 +53,7 @@ public class DistributedLockTest extends AbstractLockTest {
     public void simpleLockHandler() {
         final var locker = distributedLock.get("test");
         locker.handler()
-                .then(locked -> {
+                .accept(locked -> {
                     Assertions.assertTrue(locked);
                     Assertions.assertFalse(locker.isReleased());
                 });

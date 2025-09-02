@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'groovy'
+    id 'signing'
     id 'jacoco'
     id 'application'
     id 'java-library'
@@ -12,6 +13,7 @@ plugins {
     id "nebula.release" version "17.1.0"
     id "io.spring.dependency-management" version "1.1.0"
     id 'com.google.cloud.tools.jib' version '3.3.1'
+    id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
 }
 
 allprojects {
@@ -108,7 +110,7 @@ subprojects {
                 }
                 pom {
                     name = project.name
-                    description = project.name + ' library for transport'
+                    description = ' locks library for local and distributed locks '
                     inceptionYear.set("2025")
                     organization {
                         name.set("MFataka")
@@ -139,18 +141,49 @@ subprojects {
 
 }
 
+signing {
+    def key = findProperty('signingKey') ?: System.getenv('SIGNING_KEY')
+    def pass = findProperty('signingPassword') ?: System.getenv('SIGNING_PASSWORD')
+    useInMemoryPgpKeys(key, pass)
+    sign publishing.publications.withType(MavenPublication)
+}
+
 publishing {
     repositories {
-        maven({ MavenArtifactRepository repository ->
+        maven { ->
 
-            final evn = System.getenv()
-            repository.url = evn.getOrDefault("NEXUS_URL_RELEASE", "")
+            def repoEnv = System.getenv('GITHUB_REPOSITORY') // e.g. "hammafataka/locks-starter"
+            def (owner, repo) = (repoEnv ?: 'hammafataka/esn-web-backend').toLowerCase().split('/')
+            name = "GitHubPackages"
 
-            repository.credentials {
-                username = evn.getOrDefault("NEXUS_USERNAME", "")
-                password = evn.getOrDefault("NEXUS_PASSWORD", "")
+            url = uri("https://maven.pkg.github.com/${owner}/${repo}")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
-        })
+        }
+        maven {
+
+            def containsSnapshot = project.version.toString().contains("snapshot")
+            name = containsSnapshot ? "OSSRH_Snapshots" : "OSSRH"
+
+            url = containsSnapshot ? "https://s01.oss.sonatype.org/content/repositories/snapshots/" : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+}
+
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = findProperty('ossrhUsername').toString() ?: System.getenv('OSSRH_USERNAME')
+            password = findProperty('ossrhPassword').toString() ?: System.getenv('OSSRH_PASSWORD')
+        }
     }
 }
 

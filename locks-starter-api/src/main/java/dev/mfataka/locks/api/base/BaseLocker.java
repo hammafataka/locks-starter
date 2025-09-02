@@ -17,7 +17,7 @@ public interface BaseLocker extends Locker {
      * @return {@link AutoHandler}
      */
 
-    default AutoHandler handler() {
+    default <T> AutoHandler<T> handler() {
         return AutoHandler.of(this);
     }
 
