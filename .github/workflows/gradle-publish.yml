@@ -32,6 +32,14 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: gradle
+      - name: Check signing envs
+        run: |
+          test -n "$SIGNING_KEY" || (echo "SIGNING_KEY empty" && exit 1)
+          test -n "$SIGNING_PASSWORD" || (echo "SIGNING_PASSWORD empty" && exit 1)
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+
       - name: Release + Publish
         run: ./gradlew --no-daemon -Prelease.scope=${{ github.event.inputs.scope }} clean final publish
         env:
