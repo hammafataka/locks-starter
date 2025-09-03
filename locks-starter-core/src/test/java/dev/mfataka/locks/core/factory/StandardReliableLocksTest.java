@@ -10,8 +10,6 @@ import dev.mfataka.locks.core.config.LocksCorePropertyConfig;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.04.2025 13:27
  */
 public class StandardReliableLocksTest extends AbstractLockTest {
 

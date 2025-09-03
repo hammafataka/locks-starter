@@ -6,8 +6,6 @@ import dev.mfataka.locks.api.Locker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 12:01
  */
 public interface BaseLocker extends Locker {
     /**

@@ -15,8 +15,6 @@ import dev.mfataka.locks.core.spel.SpelExpressionEvaluator;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 17:37
  */
 @RequiredArgsConstructor
 public class LockMetadataResolver {

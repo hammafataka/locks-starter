@@ -12,9 +12,9 @@ import dev.mfataka.locks.api.handler.SimpleAutoHandler;
 
 /**
  * @author HAMMA FATAKA (mfataka@monetplus.cz)
- * @project locks-starter
- * @date 27.03.2023 22:10
- * @apiNote default implementation of {@link SimpleAutoHandler} is threadsafe
+ * <p>
+ * default implementation of {@link SimpleAutoHandler} is threadsafe
+ * </P>
  */
 @Blocking
 public interface AutoHandler<T> {

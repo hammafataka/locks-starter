@@ -10,8 +10,6 @@ import dev.mfataka.locks.api.handler.SimpleAutoHandler;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 02.08.2024 14:02
  */
 public interface AutoHandlerFactory {
     Map<BaseLocker, AutoHandler> handlers = new ConcurrentHashMap<>();

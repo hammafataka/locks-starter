@@ -10,8 +10,6 @@ import dev.mfataka.locks.core.factory.StandardReliableLocks;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 17:40
  */
 @RequiredArgsConstructor
 public class BlockingLockExecutor extends UnifiedStrategySupport {

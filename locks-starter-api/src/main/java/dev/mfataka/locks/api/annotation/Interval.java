@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 13.04.2025 16:30
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Interval {

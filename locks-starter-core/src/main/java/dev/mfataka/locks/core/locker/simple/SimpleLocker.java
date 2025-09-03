@@ -10,8 +10,6 @@ import dev.mfataka.locks.api.enums.LockType;
  * simple lock that is based on the thread for release, not only signal
  *
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 27.03.2023 12:47
  */
 public class SimpleLocker extends SimpleLockSupport {
     private static final Logger log = LoggerFactory.getLogger(SimpleLocker.class);

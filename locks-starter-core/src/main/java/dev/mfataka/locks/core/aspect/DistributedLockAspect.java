@@ -18,8 +18,6 @@ package dev.mfataka.locks.core.aspect;//package dev.mfataka.locks.aspect;
 //
 ///**
 // * @author HAMMA FATAKA
-// * @project locks-starter
-// * @date 10.04.2025 12:23
 // */
 //@Slf4j
 //@Aspect

@@ -24,8 +24,6 @@ import dev.mfataka.locks.api.utils.LoggingUtils;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 11:49
  */
 @Slf4j
 @RequiredArgsConstructor

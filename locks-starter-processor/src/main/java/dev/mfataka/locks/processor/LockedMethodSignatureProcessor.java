@@ -25,8 +25,6 @@ import dev.mfataka.locks.api.exception.LockAlreadyAcquiredException;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 13.04.2025 15:10
  */
 @SupportedAnnotationTypes(
         {"dev.mfataka.locks.api.annotation.SimpleLocked",

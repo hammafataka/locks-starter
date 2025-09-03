@@ -11,8 +11,6 @@ import dev.mfataka.locks.core.locker.simple.SimpleJvmLocker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 11:35
  */
 @Slf4j
 public class DefaultReactiveLocker extends ReactiveLockerSupport implements ReactiveLocker {

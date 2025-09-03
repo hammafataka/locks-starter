@@ -7,8 +7,6 @@ import org.intellij.lang.annotations.Language;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 17:09
  */
 @Documented
 @Target({ElementType.METHOD})

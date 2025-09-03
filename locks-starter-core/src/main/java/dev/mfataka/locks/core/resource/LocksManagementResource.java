@@ -22,8 +22,6 @@ import dev.mfataka.locks.core.service.LockCleanerService;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 24.04.2025 12:03
  */
 @RestController
 @RequestMapping("${locks.starter.endpoint.base-url}")

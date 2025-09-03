@@ -2,8 +2,6 @@ package dev.mfataka.locks.api.exception;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 13.04.2025 16:28
  */
 public class LockOperationException extends RuntimeException {
     protected String lockName;

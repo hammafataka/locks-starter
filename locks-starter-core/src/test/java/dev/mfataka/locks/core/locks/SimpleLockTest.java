@@ -9,8 +9,6 @@ import dev.mfataka.locks.core.factory.LockRegistry;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 28.04.2025 11:11
  */
 public class SimpleLockTest {
 

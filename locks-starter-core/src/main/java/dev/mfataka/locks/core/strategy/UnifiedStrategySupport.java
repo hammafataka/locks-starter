@@ -20,8 +20,6 @@ import dev.mfataka.locks.core.descriptor.LockDescriptor;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 17:55
  */
 @RequiredArgsConstructor
 public abstract class UnifiedStrategySupport {

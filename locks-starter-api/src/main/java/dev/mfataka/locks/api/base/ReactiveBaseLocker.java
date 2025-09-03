@@ -13,8 +13,6 @@ import dev.mfataka.locks.api.enums.LockMode;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 11:34
  */
 public interface ReactiveBaseLocker extends Locker {
     /**
@@ -26,7 +24,7 @@ public interface ReactiveBaseLocker extends Locker {
      *
      * @param lockExecutionResult A function that takes a boolean parameter and returns a value of type T. The boolean
      *                            parameter is true if the lock was obtained, false otherwise.
-     * @return A Mono<T>
+     * @return A Mono
      */
     <T> Mono<T> tryLock(@NotNull final Function<Boolean, T> lockExecutionResult);
 
@@ -38,20 +36,21 @@ public interface ReactiveBaseLocker extends Locker {
      *
      * @param lockExecutionResult A function that takes a boolean parameter and returns a Mono. The boolean parameter
      *                            is true if the lock was obtained, false otherwise.
-     * @return A Mono<T>
+     * @return A Mono
      */
     <T> Mono<T> tryLockMono(@NotNull final Function<Boolean, Mono<T>> lockExecutionResult);
 
     /**
      * "Obtain a lock for the given duration, and execute the given function with the lock obtained."
      * <p>
-     * The function returns a Mono<T> which is a reactive type that represents a single value. The value is the result
+     * The function returns a Mono which is a reactive type that represents a single value. The value is the result
      * of the function that is passed in
      *
+     * @param <T> generic type
      * @param duration            The amount of time to wait for the lock.
      * @param lockExecutionResult A function that takes a boolean as a parameter and returns a value of type T. The
      *                            boolean parameter is true if the lock was obtained, false otherwise.
-     * @return A Mono<T>
+     * @return A Mono
      */
     <T> Mono<T> obtainLock(@NotNull Duration duration, @NotNull final Function<Boolean, T> lockExecutionResult);
 
@@ -64,8 +63,8 @@ public interface ReactiveBaseLocker extends Locker {
      * * A Function object, which represents the function to be executed with the lock obtained
      *
      * @param duration            The duration for which the lock will be held.
-     * @param lockExecutionResult A function that returns a Mono<T> that will be executed if the lock is obtained.
-     * @return A Mono<T>
+     * @param lockExecutionResult A function that returns a Mono that will be executed if the lock is obtained.
+     * @return A Mono
      */
     <T> Mono<T> obtainLockMono(@NotNull Duration duration, @NotNull final Function<Boolean, Mono<T>> lockExecutionResult);
 
@@ -79,7 +78,7 @@ public interface ReactiveBaseLocker extends Locker {
      *
      * @param lockExecutionResult A function that returns the result of the execution of the code that needs to be
      *                            locked.
-     * @return Flux<T>
+     * @return Flux
      */
     <T> Flux<T> tryLockMany(@NotNull final Function<Boolean, T> lockExecutionResult);
 
@@ -91,7 +90,7 @@ public interface ReactiveBaseLocker extends Locker {
      *
      * @param lockExecutionResult A function that returns a Flux of type T. This function will be executed if the lock
      *                            is obtained.
-     * @return Flux<T>
+     * @return Flux
      */
     <T> Flux<T> tryLockManyFlux(@NotNull final Function<Boolean, Flux<T>> lockExecutionResult);
 
@@ -105,7 +104,7 @@ public interface ReactiveBaseLocker extends Locker {
      * @param duration            The duration for which the lock will be held.
      * @param lockExecutionResult A function that returns a Flux of type T. This function is executed when the lock is
      *                            obtained.
-     * @return Flux<T>
+     * @return Flux
      */
     <T> Flux<T> obtainLockMany(@NotNull Duration duration, @NotNull final Function<Boolean, T> lockExecutionResult);
 
@@ -119,7 +118,7 @@ public interface ReactiveBaseLocker extends Locker {
      * @param duration            The duration for which the lock will be held.
      * @param lockExecutionResult A function that returns a Flux of type T. This function will be executed if the lock
      *                            is obtained.
-     * @return Flux<T>
+     * @return Flux
      */
     <T> Flux<T> obtainLockManyFlux(@NotNull Duration duration, @NotNull final Function<Boolean, Flux<T>> lockExecutionResult);
 

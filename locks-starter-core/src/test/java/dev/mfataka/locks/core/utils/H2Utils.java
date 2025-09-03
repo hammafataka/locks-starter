@@ -6,8 +6,6 @@ import lombok.experimental.UtilityClass;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.04.2025 11:15
  */
 @UtilityClass
 public class H2Utils {

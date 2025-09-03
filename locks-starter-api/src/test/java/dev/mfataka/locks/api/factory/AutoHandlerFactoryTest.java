@@ -11,8 +11,6 @@ import dev.mfataka.locks.api.enums.LockType;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.04.2025 13:14
  */
 public class AutoHandlerFactoryTest {
 

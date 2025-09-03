@@ -12,8 +12,6 @@ import dev.mfataka.locks.api.exception.LockOperationException;
  * Provides methods to create, check, delete, and clean up locks stored in a relational database.
  *
  * @author HAMMA FATAKA
- * @project locks-starter
- * @since 09.04.2025
  */
 public interface JdbcService {
 

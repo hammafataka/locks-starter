@@ -17,8 +17,6 @@ import dev.mfataka.locks.api.enums.LockType;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 13.09.2023 15:04
  */
 public class SimpleJvmLock implements Lock<SimpleJvmLocker> {
     private final Map<String, SimpleJvmLocker> jvmLocks = new ConcurrentHashMap<>();

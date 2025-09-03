@@ -21,8 +21,6 @@ import dev.mfataka.locks.api.base.BaseLocker;
 
 /**
  * @author HAMMA FATAKA (mfataka@monetplus.cz)
- * @project locks-starter
- * @date 27.03.2023 22:26
  */
 @Blocking
 @ThreadSafe

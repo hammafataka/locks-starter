@@ -9,8 +9,6 @@ import dev.mfataka.locks.api.enums.LockType;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 17:36
  */
 public record LockDescriptor(String name, long waitFor, TemporalUnit timeUnit, LockType lockType, LockMode lockMode) {
 

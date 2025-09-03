@@ -13,8 +13,6 @@ import dev.mfataka.locks.core.config.TestAppConfig;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 28.04.2025 16:09
  */
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

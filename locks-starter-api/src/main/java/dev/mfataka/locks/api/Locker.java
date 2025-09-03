@@ -11,8 +11,6 @@ import dev.mfataka.locks.api.enums.LockType;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 02.08.2024 13:05
  */
 public interface Locker {
 

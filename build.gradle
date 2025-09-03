@@ -4,13 +4,11 @@ plugins {
     id 'groovy'
     id 'signing'
     id 'jacoco'
-    id 'application'
     id 'java-library'
     id 'maven-publish'
-    id 'io.freefair.lombok' version '6.6.1'
+    id 'io.freefair.lombok' version '8.14.2'
     id 'org.sonarqube' version '4.0.0.2929'
     id 'org.springframework.boot' version '3.5.4'
-    id "com.google.cloud.tools.jib" version "3.4.5"
     id "com.netflix.nebula.release" version "21.0.0"
     id "io.spring.dependency-management" version "1.1.0"
     id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
@@ -21,10 +19,9 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'java-library'
     apply plugin: 'org.sonarqube'
-    apply plugin: "nebula.release"
-    apply plugin: 'nebula.release'
     apply plugin: 'io.freefair.lombok'
     apply plugin: 'org.springframework.boot'
+    apply plugin: 'com.netflix.nebula.release'
     apply plugin: 'io.spring.dependency-management'
 
     group 'dev.mfataka'
@@ -47,6 +44,7 @@ allprojects {
     }
 
     java {
+        withJavadocJar()
         toolchain {
             languageVersion = JavaLanguageVersion.of(17)
         }
@@ -89,104 +87,17 @@ allprojects {
     }
 }
 
-subprojects {
-    publishing {
-        publications {
-            "$project.name"(MavenPublication) {
-                artifact(tasks.sourcesJar)
-                version = project.version
-
-                from components.java
-                afterEvaluate {
-                    artifactId = project.name
-                }
-                versionMapping {
-                    usage('java-api') {
-                        fromResolutionOf('runtimeClasspath')
-                    }
-                    usage('java-runtime') {
-                        fromResolutionResult()
-                    }
-                }
-                pom {
-                    name = project.name
-                    description = ' locks library for local and distributed locks '
-                    inceptionYear.set("2025")
-                    organization {
-                        name.set("MFataka")
-                        url.set("https://mfataka.dev/")
-                    }
-                    licenses {
-                        license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'mfataka'
-                            name = 'Mohammed Fataka'
-                            email = 'hammafataka@yahoo.fom'
-                        }
-                    }
-                    contributors {
-                        name = 'Mohammed Fataka'
-                    }
-                }
-
-            }
-        }
-    }
-
-
-}
-
-signing {
-    def key = findProperty('signingKey') ?: System.getenv('SIGNING_KEY')
-    def pass = findProperty('signingPassword') ?: System.getenv('SIGNING_PASSWORD')
-    useInMemoryPgpKeys(key, pass)
-    sign publishing.publications.withType(MavenPublication)
-}
-
-publishing {
-    repositories {
-        maven { ->
-
-            def repoEnv = System.getenv('GITHUB_REPOSITORY') // e.g. "hammafataka/locks-starter"
-            def (owner, repo) = (repoEnv ?: 'hammafataka/esn-web-backend').toLowerCase().split('/')
-            name = "GitHubPackages"
-
-            url = uri("https://maven.pkg.github.com/${owner}/${repo}")
-
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-        maven {
-
-            def containsSnapshot = project.version.toString().contains("snapshot")
-            name = containsSnapshot ? "OSSRH_Snapshots" : "OSSRH"
-
-            url = uri(containsSnapshot ? "https://s01.oss.sonatype.org/content/repositories/snapshots/" : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = System.getenv("OSSRH_USERNAME")
-                password = System.getenv("OSSRH_PASSWORD")
-            }
-        }
-    }
-}
-
 
 nexusPublishing {
     repositories {
         sonatype {
-            username = findProperty('ossrhUsername').toString() ?: System.getenv('OSSRH_USERNAME')
-            password = findProperty('ossrhPassword').toString() ?: System.getenv('OSSRH_PASSWORD')
+            nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
+            username = System.getenv('OSSRH_USERNAME')
+            password = System.getenv('OSSRH_PASSWORD')
         }
     }
 }
-
 sonar {
     properties {
         property "sonar.projectKey", "locks-starter"

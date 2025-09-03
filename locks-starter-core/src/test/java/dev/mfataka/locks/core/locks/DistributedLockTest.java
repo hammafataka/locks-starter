@@ -11,8 +11,6 @@ import dev.mfataka.locks.core.AbstractLockTest;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 28.04.2025 11:11
  */
 public class DistributedLockTest extends AbstractLockTest {
 

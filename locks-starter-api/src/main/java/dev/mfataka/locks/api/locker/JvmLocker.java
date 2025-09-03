@@ -6,8 +6,6 @@ import dev.mfataka.locks.api.enums.LockType;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 17.04.2025 10:39
  */
 public interface JvmLocker extends BaseLocker {
 

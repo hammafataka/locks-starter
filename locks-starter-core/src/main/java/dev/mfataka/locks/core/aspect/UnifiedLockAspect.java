@@ -14,8 +14,6 @@ import dev.mfataka.locks.core.strategy.LockExecutionStrategy;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 14.04.2025 18:03
  */
 @Slf4j
 @Aspect

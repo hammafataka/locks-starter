@@ -19,8 +19,6 @@ import dev.mfataka.locks.api.locker.JvmLocker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 20.03.2023 15:19
  */
 public class ReactiveLock implements Lock<ReactiveLocker> {
     public static final String DEFAULT_LOCK_KEY = "DEFAULT_REACTIVE_LOCK";

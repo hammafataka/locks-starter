@@ -16,8 +16,6 @@ import dev.mfataka.locks.api.factory.ReactiveDistributedLock;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 16.03.2023 11:10
  */
 @Slf4j
 public class DefaultReactiveDistributedLock implements ReactiveDistributedLock {

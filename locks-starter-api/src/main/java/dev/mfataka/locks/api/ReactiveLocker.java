@@ -5,8 +5,6 @@ import dev.mfataka.locks.api.locker.JvmLocker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 11:31
  */
 public interface ReactiveLocker extends ReactiveBaseLocker {
 

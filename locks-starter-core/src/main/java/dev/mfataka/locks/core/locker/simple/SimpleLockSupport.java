@@ -14,8 +14,6 @@ import dev.mfataka.locks.api.enums.LockMode;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 13:34
  */
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class SimpleLockSupport implements BaseLocker {

@@ -17,8 +17,6 @@ import dev.mfataka.locks.api.utils.LoggingUtils;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.06.2022 13:29
  */
 @Slf4j
 public class SimpleDistributedLock implements DistributedLock {

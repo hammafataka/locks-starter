@@ -14,8 +14,6 @@ import dev.mfataka.locks.core.AbstractLockTest;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.04.2025 14:27
  */
 public class SimpleJdbcServiceTest extends AbstractLockTest {
 

@@ -10,8 +10,6 @@ import dev.mfataka.locks.core.service.SimpleJdbcService;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 28.04.2025 11:14
  */
 public class LockRegistryTest {
     @BeforeEach

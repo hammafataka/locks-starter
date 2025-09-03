@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 25.11.2022 13:41
  */
 public final class LoggingUtils {
     public static final String lockMessageLog = "locking with try lock, lockResult [{}]";

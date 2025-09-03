@@ -20,8 +20,6 @@ import dev.mfataka.locks.core.locker.simple.SimpleLock;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 24.04.2025 14:49
  */
 public interface LockRegistry {
 

@@ -9,8 +9,6 @@ import dev.mfataka.locks.api.locker.JvmLocker;
  * lock that is based only on the signal and not thread
  *
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 13:34
  */
 public class SimpleJvmLocker extends SimpleLockSupport implements JvmLocker {
     private static final Logger log = LoggerFactory.getLogger(SimpleJvmLocker.class);

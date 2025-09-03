@@ -27,8 +27,6 @@ import dev.mfataka.locks.api.service.JdbcService;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 09.04.2025 16:23
  */
 @Slf4j
 @RequiredArgsConstructor

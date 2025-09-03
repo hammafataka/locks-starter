@@ -12,8 +12,6 @@ import dev.mfataka.locks.api.service.JdbcService;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 09.04.2025 15:08
  */
 @Slf4j
 public class JdbcLocker implements DistributedLocker {

@@ -11,8 +11,6 @@ import dev.mfataka.locks.core.locker.reactive.ReactiveLockerSupport;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 21.03.2023 11:44
  */
 @Slf4j
 public class DefaultReactiveDistributedLocker extends ReactiveLockerSupport implements ReactiveDistributedLocker {

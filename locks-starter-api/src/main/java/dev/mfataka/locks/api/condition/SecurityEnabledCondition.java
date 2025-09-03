@@ -6,8 +6,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 20.05.2025 14:16
  */
 public class SecurityEnabledCondition implements Condition {
     @Override

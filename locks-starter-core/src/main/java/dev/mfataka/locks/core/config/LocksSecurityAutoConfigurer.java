@@ -21,8 +21,6 @@ import dev.mfataka.locks.api.condition.SecurityEnabledCondition;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 24.04.2025 15:38
  */
 @Slf4j
 @Configuration

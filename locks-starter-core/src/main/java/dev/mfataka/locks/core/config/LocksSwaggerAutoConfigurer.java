@@ -26,8 +26,6 @@ import dev.mfataka.locks.api.context.LockContext;
 
 /**
  * @author HAMMA FATAKA
- * @project transport-locks-starter
- * @date 05.09.2023 16:05
  */
 @Slf4j
 @Configuration

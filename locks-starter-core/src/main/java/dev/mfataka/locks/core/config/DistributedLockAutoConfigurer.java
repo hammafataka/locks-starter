@@ -33,8 +33,6 @@ import dev.mfataka.locks.core.strategy.ReactiveLockExecutor;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 13.03.2023 10:46
  */
 @Slf4j
 @Configuration

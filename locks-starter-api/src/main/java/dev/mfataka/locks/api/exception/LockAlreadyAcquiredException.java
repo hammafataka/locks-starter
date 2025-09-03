@@ -2,8 +2,6 @@ package dev.mfataka.locks.api.exception;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 15.04.2025 8:53
  */
 public class LockAlreadyAcquiredException extends LockOperationException {
     public LockAlreadyAcquiredException(final String lockName) {

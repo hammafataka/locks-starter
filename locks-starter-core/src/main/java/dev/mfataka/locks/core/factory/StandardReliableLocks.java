@@ -10,8 +10,6 @@ import dev.mfataka.locks.core.locker.simple.SimpleLocker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 17.04.2025 15:26
  */
 public interface StandardReliableLocks extends LockRegistry {
 

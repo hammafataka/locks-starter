@@ -26,8 +26,6 @@ import dev.mfataka.locks.core.locker.simple.SimpleLocker;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 17.04.2025 13:48
  */
 @Slf4j
 public class StandardReliableLocksImp implements StandardReliableLocks {

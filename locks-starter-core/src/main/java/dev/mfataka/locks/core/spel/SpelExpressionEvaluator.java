@@ -12,8 +12,6 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 10.04.2025 12:55
  */
 public class SpelExpressionEvaluator {
 

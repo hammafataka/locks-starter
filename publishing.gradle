@@ -1,0 +1,74 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+signing {
+    def key = System.getenv('SIGNING_KEY')
+    def pass = System.getenv('SIGNING_PASSWORD')
+    useInMemoryPgpKeys(key, pass)
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        def maven = create(project.name, MavenPublication) {
+            group = project.group
+            version project.version
+
+            it.artifact(project.tasks.sourcesJar)
+            it.artifact(project.tasks.javadocJar)
+            it.artifact(project.tasks.jar)
+
+            it.pom.withXml {
+                def dependenciesNode = asNode().appendNode("dependencies")
+                if (!project.tasks.findByName("shadowJar")) {
+                    project.configurations.api.dependencies.each {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                        dependencyNode.appendNode('scope', 'compile')
+                    }
+                }
+            }
+
+            pom {
+                name = "locks-starter"
+                description = 'Locks library for local and distributed locks'
+                url = 'https://mfataka.dev'
+                licenses {
+                    license {
+                        name = 'GPL-3.0 License'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.html'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'mfataka'
+                        name = 'Mohammed Fataka'
+                        email = 'hammafataka@yahoo.fom'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:github.com/hammafataka/locks-starter.git'
+                    developerConnection = 'scm:git:ssh://github.com/hammafataka/locks-starter.git'
+                    url = 'https://github.com/hammafataka/locks-starter/tree/main'
+                }
+            }
+        }
+    }
+    repositories {
+        maven { ->
+
+            def repoEnv = System.getenv('GITHUB_REPOSITORY') // e.g. "hammafataka/locks-starter"
+            def (owner, repo) = (repoEnv ?: 'hammafataka/locks-starter').toLowerCase().split('/')
+            name = "GitHubPackages"
+
+            url = uri("https://maven.pkg.github.com/${owner}/${repo}")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}

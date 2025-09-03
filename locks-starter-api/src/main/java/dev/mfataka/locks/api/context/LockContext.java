@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 17.04.2025 11:19
  */
 @Slf4j
 public record LockContext(String factoryName,

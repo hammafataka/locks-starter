@@ -17,8 +17,6 @@ import dev.mfataka.locks.api.factory.AutoHandlerFactory;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 02.08.2024 13:13
  */
 public class SimpleLock implements Lock<SimpleLocker> {
 

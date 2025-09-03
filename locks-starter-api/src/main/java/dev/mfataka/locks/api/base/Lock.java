@@ -14,8 +14,6 @@ import dev.mfataka.locks.api.enums.LockType;
  *
  * @param <T> the type of lock to be created
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 02.08.2024 13:12
  */
 public interface Lock<T extends Locker> {
 

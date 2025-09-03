@@ -15,8 +15,6 @@ import dev.mfataka.locks.core.locker.distibuted.SimpleDistributedLock;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 29.04.2025 15:26
  */
 public class StandardReliableLocksClearingTest extends AbstractLockTest {
 

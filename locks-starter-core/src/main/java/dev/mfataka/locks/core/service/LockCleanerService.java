@@ -17,8 +17,6 @@ import dev.mfataka.locks.core.factory.StandardReliableLocks;
 
 /**
  * @author HAMMA FATAKA
- * @project locks-starter
- * @date 17.04.2025 15:50
  */
 @Slf4j
 @RequiredArgsConstructor
