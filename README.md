@@ -1,5 +1,9 @@
 # Locks Starter
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.mfataka/locks-starter-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.mfataka/locks-starter-core)
+[![javadoc](https://javadoc.io/badge2/dev.mfataka/locks-starter-core/javadoc.svg)](https://javadoc.io/doc/dev.mfataka/locks-starter-core)
+
+
 A robust, flexible locking framework for Spring Boot, supporting both annotation-based and manual lock management for
 distributed, reactive, and local locks.
 
@@ -24,7 +28,7 @@ distributed, reactive, and local locks.
 Add the starter to your project dependencies:
 
 ```kotlin
-implementation("dev.mfataka:locks-starter-core:1.0.0")
+implementation("dev.mfataka:locks-starter-core:${LOCKS_STARTER_VERSION}")
 ```
 
 Or, in a monorepo setup:
@@ -106,10 +110,10 @@ public Mono<Void> processDistributedReactive(String itemId) {
 ### Obtain Locks via Registry (for non-distributed/simple/reacive locks)
 
 ```java
-import factory.dev.mfataka.locks.core.LockRegistry;
-import base.dev.mfataka.locks.api.Lock;
-import simple.locker.dev.mfataka.locks.core.SimpleLocker;
-import dev.mfataka.locks.core.locker.reactive.ReactiveLocker;
+import dev.mfataka.locks.api.ReactiveLocker;
+import dev.mfataka.locks.api.base.Lock;
+import dev.mfataka.locks.core.factory.LockRegistry;
+import dev.mfataka.locks.core.locker.simple.SimpleLocker;
 
 public class SomeService {
 
@@ -117,7 +121,7 @@ public class SomeService {
 
         // Obtain local simple lock
         Lock<SimpleLocker> simpleLockFactory = LockRegistry.simpleLock();
-        SimpleLocker locker = simple LockFactory.get("my-critical-section");
+        SimpleLocker locker = simpleLockFactory.get("my-critical-section");
         boolean locked = locker.tryLock();
         if (locked) {
             try {
@@ -138,8 +142,8 @@ public class SomeService {
 ### Obtain Distributed Locks via Spring DI
 
 ```java
-import factory.dev.mfataka.locks.api.DistributedLock;
-import factory.dev.mfataka.locks.api.ReactiveDistributedLock;
+import dev.mfataka.locks.api.factory.DistributedLock;
+import dev.mfataka.locks.api.factory.ReactiveDistributedLock;
 
 public class SomeService {
 
@@ -175,17 +179,21 @@ public class SomeService {
     public Object someMethod() {
         SimpleLocker locker = LockRegistry.simpleLock().get("autohandle");
         locker.handler()
-                .then(locked -> {
+                .accept(locked -> {
                     if (locked) {
                         // safely do work
                     }
                 });
 
         // Or return a result with thenReturn
-        int result = locker.handler().thenReturn(locked -> {
-            if (locked) return 1;
-            return 0;
-        });
+        int result = locker.<Integer>handler()
+                .map(locked -> {
+                    if (locked) {
+                        return 1;
+                    }
+                    return 0;
+                })
+                .block();
     }
 }
 ```
@@ -196,8 +204,8 @@ With timeout:
 public class SomeService {
 
     public Object someMethod() {
-        locker.handler()
-                .thenReturn(Duration.ofSeconds(10), locked -> doSomething());
+        locker.<Object>handler()
+                .map(Duration.ofSeconds(10), locked -> doSomething());
     }
 }
 ```
@@ -613,8 +621,8 @@ Add `locks-starter-processor` as an `annotationProcessor` dependency in your pro
 
 ```kotlin
 dependencies {
-    implementation("dev.mfataka:locks-starter-core:1.0.0")
-    annotationProcessor("dev.mfataka:locks-starter-processor:1.0.0")
+    implementation("dev.mfataka:locks-starter-core:${LOCKS_STARTER_VERSION}")
+    annotationProcessor("dev.mfataka:locks-starter-processor:${LOCKS_STARTER_VERSION}")
 }
 ```
 
@@ -628,7 +636,7 @@ dependencies {
 <dependency>
     <groupId>dev.mfataka</groupId>
     <artifactId>locks-starter-processor</artifactId>
-    <version>1.0.0</version>
+    <version>${LOCKS_STARTER_VERSION}</version>
     <scope>provided</scope>
 </dependency>
 ```
